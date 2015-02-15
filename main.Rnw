@@ -1,0 +1,58 @@
+\documentclass[12pt, twoside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{Aprendizaje estadístico}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{Capítulo \thechapter}
+\fancyfoot[CO,RE]{Daniel Salgado}
+
+
+\begin{document}
+<<echo=FALSE>>=
+options(width=60)
+@
+
+\title{
+  {Aprendizaje Estadístico}\\
+  {\large Facultad de Ciencias, UNAM}\\
+	{\includegraphics{unam_logo.png}}
+}
+\author{Daniel Salgado Olvera}
+\date{11 de Agosto 1987}
+\maketitle
+
+\chapter*{Objetivo}
+<<objetivo, child='capitulos/objetivo.Rnw'>>=
+@
+
+\chapter*{Dedicatoria}
+A mis padres.
+
+\tableofcontents
+
+\chapter{Introducción}
+<<introduccion, child='capitulos/introduccion.Rnw'>>=
+@
+
+\chapter{Capitulo 1}
+<<capitulo1, child='capitulos/capitulo1.Rnw'>>=
+@
+
+\chapter{Capitulo 2}
+<<capitulo2, child='capitulos/capitulo2.Rnw'>>=
+@
+
+\chapter{Concluciones}
+<<concluciones, child='capitulos/concluciones.Rnw'>>=
+@
+
+\appendix
+\chapter{Apendice}
+<<apendice, child='capitulos/apendice.Rnw'>>=
+@
+\end{document}

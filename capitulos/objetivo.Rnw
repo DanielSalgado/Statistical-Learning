@@ -1,0 +1,1 @@
+Esta tesis tiene como objetivo realizar una clasificación de los seguidores de una marca en Twitter, con el objetivo de adecuar la comunicación a cada uno de estos grupos fomentando así la satisfacción del usuario con la marca.

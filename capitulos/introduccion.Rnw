@@ -1,0 +1,6 @@
+Aqui va un cacho de codigo en R
+
+<<chunk1, tidy=TRUE>>=
+x <- rnorm(5)
+x
+@

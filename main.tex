@@ -1,0 +1,175 @@
+\documentclass[12pt, twoside]{report}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{Aprendizaje estadístico}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{Capítulo \thechapter}
+\fancyfoot[CO,RE]{Daniel Salgado}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+\title{
+  {Aprendizaje Estadístico}\\
+  {\large Facultad de Ciencias, UNAM}\\
+	{\includegraphics{unam_logo.png}}
+}
+\author{Daniel Salgado Olvera}
+\date{11 de Agosto 1987}
+\maketitle
+
+\chapter*{Objetivo}
+
+Esta tesis tiene como objetivo realizar una clasificación de los seguidores de una marca en Twitter, con el objetivo de adecuar la comunicación a cada uno de estos grupos fomentando así la satisfacción del usuario con la marca.
+
+\chapter*{Dedicatoria}
+A mis padres.
+
+\tableofcontents
+
+\chapter{Introducción}
+
+Aqui va un cacho de codigo en R
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{x} \hlkwb{<-} \hlkwd{rnorm}\hlstd{(}\hlnum{5}\hlstd{)}
+\hlstd{x}
+\end{alltt}
+\begin{verbatim}
+## [1]  0.3595619  0.5533967 -1.3158072  0.8424121 -0.1239523
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+\chapter{Capitulo 1}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut lacinia arcu, eu euismod ligula. Fusce eleifend neque mollis, sagittis urna nec, sagittis felis. Etiam porttitor eros quis pretium finibus. Etiam vitae nunc nibh. Sed eget felis non dolor maximus molestie sit amet in dui. In hac habitasse platea dictumst. Ut sem leo, rhoncus vitae varius eget, cursus et leo. Sed placerat dolor pharetra orci placerat elementum. Donec commodo metus sed volutpat eleifend. Nunc vel quam mauris. Sed rhoncus ultrices nisl sit amet dignissim. Nulla non enim vel risus imperdiet euismod id eu mauris. Nullam faucibus sem id tincidunt vehicula. Aliquam quis congue sapien, tincidunt feugiat metus. Integer luctus magna ut gravida porttitor.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{a} \hlkwb{<-} \hlkwd{c}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{43}\hlstd{,} \hlnum{2}\hlstd{)}
+\hlstd{a}
+\end{alltt}
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18
+## [19] 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36
+## [37] 37 38 39 40 41 42 43  2
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+Pellentesque dolor mi, tincidunt sit amet porta ac, gravida quis nisi. Ut fermentum sit amet purus nec tristique. Ut id leo ac arcu luctus consectetur at et tellus. Integer quis mauris eget tellus tempor blandit. Sed mi nisi, vehicula eget eros id, mollis sagittis risus. Duis erat felis, pulvinar in magna et, eleifend accumsan ante. Aenean eu lobortis dolor, et bibendum mi. Ut justo enim, vulputate vitae suscipit ut, congue at ante. Nulla luctus orci id tellus mollis gravida. Mauris dignissim massa eu felis dignissim, non luctus nunc luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris eget diam sollicitudin, iaculis dui nec, tristique ipsum. Nullam tempus molestie maximus.
+
+Quisque a magna nisl. Duis et purus sapien. Suspendisse volutpat purus libero, ac facilisis nisl sodales ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce consectetur erat purus. Cras a vehicula turpis. Vivamus vulputate eget ipsum non tempus. Maecenas consequat nunc augue, non maximus massa ultricies eu. Curabitur tincidunt consectetur mi, nec convallis massa. Vivamus consectetur, sapien ut maximus sodales, lacus eros condimentum erat, at euismod enim risus ut est. Pellentesque maximus augue elementum eros molestie suscipit. Proin aliquam tristique urna, ac aliquam metus sodales sed. Aliquam mattis augue et leo semper pulvinar.
+
+Vestibulum cursus neque lacus, vel efficitur purus congue in. Fusce quis vulputate nulla. Nullam at convallis augue. Pellentesque varius risus non turpis placerat, sit amet consequat quam malesuada. Quisque sed neque sed ante ultricies condimentum vel tempus tortor. Nullam ac volutpat sapien, et molestie elit. Pellentesque gravida nunc congue mauris viverra, ac tempus arcu mollis. Nullam enim dolor, auctor sit amet bibendum sit amet, suscipit non neque. Duis velit lectus, sagittis ac mollis vitae, sagittis vel lacus. Phasellus ac neque ultricies elit ornare commodo sit amet et purus. Sed blandit tellus augue, quis porta velit convallis non.
+
+Ut tincidunt lacus ut erat molestie, eget posuere nunc volutpat. Maecenas vitae scelerisque orci. Nullam cursus maximus fermentum. Fusce sodales ultrices justo sed fringilla. Cras vel sollicitudin lorem. Nulla quis rhoncus quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla a libero vel quam venenatis aliquet.
+
+Aliquam fringilla scelerisque diam. Curabitur non nunc nulla. Nam at facilisis orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed vitae tincidunt ligula. Sed efficitur risus suscipit orci sodales commodo. Praesent eu neque id massa efficitur finibus et a justo. Integer accumsan tempor orci ac elementum. Mauris arcu felis, elementum non ipsum in, iaculis condimentum orci. Aenean non purus metus. Maecenas sollicitudin neque a odio malesuada, sed pharetra tellus sollicitudin. Aliquam a nisi in massa ornare gravida quis vitae magna.
+
+Nunc sem mauris, laoreet sit amet vestibulum a, vulputate ut felis. Nam lacus urna, laoreet et lorem eu, varius auctor libero. Donec ut turpis orci. Etiam neque massa, gravida in lacus non, sagittis accumsan ex. Duis blandit risus eget arcu efficitur, luctus dapibus nisi blandit. Etiam nec faucibus sem. Aenean ac lobortis metus.
+
+Curabitur lacinia consequat ligula, non aliquam magna mollis eu. Quisque tincidunt augue dui, ut laoreet lorem tristique ultrices. Duis non lorem quis tortor pretium aliquet. Donec est ligula, vehicula at odio vel, ultrices tincidunt velit. Nunc a tortor sagittis purus tincidunt volutpat a blandit orci. Donec efficitur ex non enim rhoncus, imperdiet suscipit sapien iaculis. Donec placerat tempor velit, eget molestie eros elementum sit amet. In ornare ultrices congue. Duis porttitor gravida sollicitudin. Etiam non maximus libero, quis pulvinar erat.
+
+Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque id quam feugiat, faucibus felis ac, sollicitudin nibh. Curabitur ut viverra eros, id lobortis sem. Nulla varius sodales accumsan. Aenean nec ligula tincidunt, mollis lectus sed, ullamcorper magna. Cras consectetur diam quis tellus blandit, eget aliquam nisl accumsan. Praesent sagittis ut nisi et ultricies. In metus ligula, rutrum nec ullamcorper nec, aliquet vitae neque. Nunc felis risus, fermentum vel sodales et, lacinia nec lectus. Vestibulum eget urna tincidunt, pellentesque ipsum a, varius elit. Nulla condimentum tempor velit eget euismod. Mauris blandit facilisis arcu sit amet sodales. Integer ut diam risus. Cras vitae convallis ante. Ut sed neque velit. Donec iaculis libero risus, at placerat sapien tempor sed.
+
+Pellentesque iaculis urna at ipsum auctor laoreet. Sed volutpat, ipsum quis mollis faucibus, nibh ex finibus quam, ultrices tempus leo sem vel risus. Nulla sagittis eget tellus eu interdum. Donec iaculis posuere urna. Fusce in imperdiet elit. Curabitur interdum quam ac magna porta, a consequat libero maximus. Quisque bibendum purus sed libero auctor efficitur. Phasellus a placerat nunc, nec interdum tellus. Nam accumsan nulla lacus, in varius nisl luctus eu. Curabitur dapibus neque a gravida tincidunt. Pellentesque at risus risus. Sed fermentum est lacus, et facilisis leo tincidunt eget. Suspendisse potenti. Nam sit amet viverra velit.
+
+Phasellus pharetra elit urna, ultrices accumsan mi consequat vel. Cras vel faucibus nulla. Etiam turpis nibh, volutpat sit amet aliquet semper, ornare sit amet magna. Nulla aliquam, nisi sed eleifend tempus, magna massa scelerisque metus, at dictum massa magna sit amet eros. Donec vitae rutrum dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In eget egestas nunc. Maecenas sed porta dolor. Praesent dictum justo id diam tristique, eget ultricies diam egestas.
+
+Curabitur blandit mauris et neque sagittis, sed interdum dolor tempus. Suspendisse eu ex at ex aliquam pretium. Aliquam non justo cursus arcu imperdiet sollicitudin ac nec erat. Etiam id odio semper, cursus purus posuere, luctus diam. Vivamus ac hendrerit purus, sit amet pulvinar neque. Curabitur sit amet vehicula lorem, a posuere mi. Nulla in fermentum ligula. Quisque ut viverra neque. Fusce fermentum auctor augue non aliquet. Curabitur aliquam tincidunt consequat.
+
+Duis vestibulum vulputate malesuada. Nunc ac eleifend metus. Nam ullamcorper lectus ut velit molestie, ullamcorper dictum sapien interdum. Vivamus tristique sem quis volutpat gravida. Morbi feugiat viverra ullamcorper. Sed eleifend consectetur est, eget sodales enim tempus a. Quisque turpis metus, venenatis vel dolor eget, venenatis vehicula urna. Cras mollis quam sed ipsum ullamcorper eleifend. Aenean at sapien eu tortor placerat condimentum non aliquam arcu. Praesent in mauris eros. Morbi ultricies sem nunc, ac accumsan nisl vulputate a. Integer euismod arcu risus, eu luctus felis gravida sit amet. Proin id arcu tellus. Donec vitae nunc dapibus, luctus tellus sit amet, maximus odio. Donec vulputate massa in libero efficitur condimentum. Mauris rutrum massa vel gravida congue.
+
+Maecenas suscipit leo id neque sagittis, quis porttitor leo molestie. Nunc augue eros, hendrerit vitae est a, maximus gravida velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam scelerisque quam a justo laoreet, laoreet ullamcorper orci lacinia. Fusce odio lorem, dapibus in sollicitudin in, tempus sit amet diam. Ut varius urna in fermentum sollicitudin. Donec varius nibh quis placerat condimentum. Etiam venenatis sed est vel tincidunt. Donec convallis massa id nisl viverra, vel lacinia nulla semper. Morbi gravida nisi sapien, in molestie dolor blandit nec. Nunc placerat lorem et lectus lacinia, sit amet rhoncus risus egestas. Aliquam molestie est quam, nec imperdiet turpis scelerisque ac.
+
+Pellentesque nec augue et diam interdum condimentum. Cras aliquam nec augue eu fringilla. Donec vulputate ut lectus sit amet rutrum. Duis sit amet pulvinar mi. In odio libero, dapibus in magna sed, aliquet auctor felis. Maecenas ut eros at velit suscipit euismod. Cras commodo quam in sem pellentesque congue.
+
+\chapter{Capitulo 2}
+
+Aqui va un cacho de codigo en R, podemos usar notacion de latex
+$X=x^2 + x_ij$
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{x} \hlkwb{<-} \hlkwd{rnorm}\hlstd{(}\hlnum{10}\hlstd{)}
+\hlstd{x}
+\end{alltt}
+\begin{verbatim}
+##  [1]  0.71534431  0.31545124 -1.18563384 -0.69008550
+##  [5] -0.02450326 -0.85387378 -0.32436538  0.13592449
+##  [9] -0.32811919 -0.32591655
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+
+\chapter{Concluciones}
+
+Concluciones
+
+\appendix
+\chapter{Apendice}
+
+Apendice
+\end{document}

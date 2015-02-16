@@ -1,0 +1,31 @@
+El objetivo es agrupar observaciones de un conjunto de datos en distintos subgrupos, de tal manera que las observaciones pertenecienes a un mismo subconjunto  esten más relacionados entre si que las pertenecientes a subconjuntos distintos.
+
+Se necesita definir una métrica que nos permita determinar si dos observaciones son similares o diferentes entre si, en el caso de variables continuas la métrica más usada es la distancia euclidiana, si las variables son categoricas se definen métricas de similitud.
+
+El poder determinar subconjuntos dentro de una coleccion de datos nos permitite describir sintéticamente nuestro conjunto de datos. En lugar de tener que describir a todos los elementos de un subgrupo, con describir las caracteristicas de un representante característico del subgrupo se describe a todo el subgrupo.
+
+\section{K-means}
+
+Para realizar un ejemplo sencillo de el metodo de K-means utilizaremos el conjunto de datos Iris incluido en R, este conjunto de datos fue introducido por Sir Ronald Fisher (1936) como un ejemplo para analisis de discriminante.
+
+<<no_supervisado_chunk1, tidy=TRUE, results="asis", echo=FALSE>>=
+library(xtable)
+xtable(head(iris[,2:ncol(iris)]))
+@
+
+R tiene una funcion kmeans() para realizar este tipo de analisis, en este caso sabemos el valor de $K$ ya que el conjunto de datos Iris solamente contiene información de tres especies de flores. 
+<<no_supervisado_KmeansIris1, tidy=TRUE>>=
+kmeans.output <- kmeans(iris[,1:4], centers = 3, nstart = 50)
+@
+El parametro nstart indica el numero de veces que se correra el algoritmo con distintos centros, en este caso se ejecutó el algoritmo 50 veces, kmeans solamente regresa la ejecucion con los mejores resultados.
+
+Para poder tener una representacion grafica de los resultados obtenidos por el algoritmo gráficaremos solamente 2 pares de variables, (Sepal.Length. Petal.Length) y (Sepal.Width, Petal.Width).
+<<test, out.width='5.5cm', out.height='5.5cm', fig.show='hold', tidy=TRUE, fig.align='center', echo=FALSE>>=
+km.cluster <- kmeans.output$cluster
+par(mar = c(5,4,4,2)+0.5)
+plot(iris$Sepal.Length, iris$Petal.Length, col = km.cluster, 
+     pch = 20, cex = 2, xlab="Sepal.Length", ylab="Petal.Length", cex.lab = 2)
+plot(iris$Sepal.Width, iris$Petal.Width, col = km.cluster, 
+     pch = 20, cex = 2, xlab="Sepal.Width", ylab="Petal.Width", cex.lab = 2)
+@
+

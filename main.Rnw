@@ -1,49 +1,71 @@
-\documentclass[12pt, twoside]{report}
+\documentclass[openright, 12pt, twoside]{report}
+\usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
+%% paquetes de matemáticas
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm} %para usar theoremas, lemmas y demás
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{comment} %para comentar con \begin{comment} 
+
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+%Para modificar los headers y footers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhead{}
-\fancyhead[RO,LE]{Aprendizaje estadístico}
-\fancyfoot{}
-\fancyfoot[LE,RO]{\thepage}
-\fancyfoot[LO,CE]{Capítulo \thechapter}
-\fancyfoot[CO,RE]{Daniel Salgado}
-
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\fancyfoot{} % clear all footer fields
+\fancyhead[CE, RE, CO, LO]{}
+\fancyhead[LE]{\thepage \ \ \ \ \ \ \leftmark}
+\fancyhead[RO]{\rightmark \ \ \ \ \ \ \thepage}
+\renewcommand{\headrulewidth}{0pt}
+\headheight = 15pt
 
 \begin{document}
+\pagestyle{empty}
 <<echo=FALSE>>=
 options(width=60)
 @
 
-\title{
-  {Aprendizaje Estadístico}\\
-  {\large Facultad de Ciencias, UNAM}\\
-	{\includegraphics{unam_logo.png}}
-}
+\pagenumbering{Roman}
+\title{Metodos estadisticos para la clasificación de datos}
+
 \author{Daniel Salgado Olvera}
-\date{11 de Agosto 1987}
+\date{\today}
 \maketitle
 
 \chapter*{Objetivo}
 <<objetivo, child='capitulos/objetivo.Rnw'>>=
 @
 
-\chapter*{Dedicatoria}
-A mis padres.
+%\chapter*{Dedicatoria}
+%A mis padres.
+
+\newpage
 
 \tableofcontents
 
+\begin{comment}
 \chapter{Introducción}
+\pagestyle{fancy}
+\pagenumbering{arabic} %Usamos la numeración arabica a partir del 1º capitulo.
 <<introduccion, child='capitulos/introduccion.Rnw'>>=
 @
+\end{comment}
 
-\chapter{Capitulo 1}
-<<capitulo1, child='capitulos/capitulo1.Rnw'>>=
+\chapter{Algoritmos de agrupamiento no supervisados}
+\pagenumbering{arabic} %%borrar si se ponen capitulos antes
+<<no_supervisado, child='capitulos/no_supervisado.Rnw'>>=
 @
 
-\chapter{Capitulo 2}
+\begin{comment}
+\chapter{Obtencion de datos}
+<<obtencion_de_datos, child='capitulos/obtencion_de_datos.Rnw'>>=
+@
+
+\chapter{Procesamiento de datos}
 <<capitulo2, child='capitulos/capitulo2.Rnw'>>=
 @
 
@@ -55,4 +77,6 @@ A mis padres.
 \chapter{Apendice}
 <<apendice, child='capitulos/apendice.Rnw'>>=
 @
+\end{comment}
+
 \end{document}

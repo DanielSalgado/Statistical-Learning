@@ -7,10 +7,13 @@
 \usepackage{amsthm} %para usar theoremas, lemmas y demás
 \usepackage{mathrsfs}
 \usepackage{enumerate}
-\usepackage{comment} %para comentar con \begin{comment} 
+\usepackage{comment} %para comentar con \begin{comment}
 
+
+% for inline R code: if the inline code is not correctly parsed, you will see a message
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+
 %Para modificar los headers y footers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -25,8 +28,11 @@
 
 \begin{document}
 \pagestyle{empty}
-<<echo=FALSE>>=
-options(width=60)
+
+<<echo=FALSE, cache=FALSE, include=FALSE>>=
+  library(knitr)
+  opts_chunk$set(size = "small")
+  opts_knit$set(root.dir = '~/Desktop/Tesis/Statistical-Learning')
 @
 
 \pagenumbering{Roman}
@@ -47,24 +53,22 @@ options(width=60)
 
 \tableofcontents
 
-\begin{comment}
+
 \chapter{Introducción}
 \pagestyle{fancy}
-\pagenumbering{arabic} %Usamos la numeración arabica a partir del 1º capitulo.
+\pagenumbering{arabic} %Usamos la numeración arabiga a partir del 1 capitulo.
 <<introduccion, child='capitulos/introduccion.Rnw'>>=
 @
-\end{comment}
 
-\chapter{Algoritmos de agrupamiento no supervisados}
-\pagenumbering{arabic} %%borrar si se ponen capitulos antes
-<<no_supervisado, child='capitulos/no_supervisado.Rnw'>>=
-@
-
-\begin{comment}
 \chapter{Obtencion de datos}
 <<obtencion_de_datos, child='capitulos/obtencion_de_datos.Rnw'>>=
 @
 
+\chapter{Algoritmos de agrupamiento no supervisados}
+<<no_supervisado, child='capitulos/no_supervisado.Rnw'>>=
+@
+
+\begin{comment}
 \chapter{Procesamiento de datos}
 <<capitulo2, child='capitulos/capitulo2.Rnw'>>=
 @

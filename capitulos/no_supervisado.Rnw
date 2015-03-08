@@ -10,17 +10,18 @@ Para realizar un ejemplo sencillo de el metodo de K-means utilizaremos el conjun
 
 <<no_supervisado_chunk1, tidy=TRUE, results="asis", echo=FALSE>>=
 library(xtable)
-xtable(head(iris[,2:ncol(iris)]))
+iris.table <- xtable(head(iris[,2:ncol(iris)]))
+print(iris.table, floating = F,include.rownames=FALSE)
 @
 
-R tiene una funcion kmeans() para realizar este tipo de analisis, en este caso sabemos el valor de $K$ ya que el conjunto de datos Iris solamente contiene información de tres especies de flores. 
+R tiene una funcion \texttt{kmeans()} para realizar este tipo de analisis, en este caso sabemos el valor de $K$ ya que el conjunto de datos Iris solamente contiene información de tres especies de flores. 
 <<no_supervisado_KmeansIris1, tidy=TRUE>>=
 kmeans.output <- kmeans(iris[,1:4], centers = 3, nstart = 50)
 @
 El parametro nstart indica el numero de veces que se correra el algoritmo con distintos centros, en este caso se ejecutó el algoritmo 50 veces, kmeans solamente regresa la ejecucion con los mejores resultados.
 
 Para poder tener una representacion grafica de los resultados obtenidos por el algoritmo gráficaremos solamente 2 pares de variables, (Sepal.Length. Petal.Length) y (Sepal.Width, Petal.Width).
-<<test, out.width='5.5cm', out.height='5.5cm', fig.show='hold', tidy=TRUE, fig.align='center', echo=FALSE>>=
+<<test, out.width='5cm', out.height='5cm', fig.show='hold', tidy=TRUE, fig.align='center', echo=FALSE>>=
 km.cluster <- kmeans.output$cluster
 par(mar = c(5,4,4,2)+0.5)
 plot(iris$Sepal.Length, iris$Petal.Length, col = km.cluster, 
@@ -28,4 +29,3 @@ plot(iris$Sepal.Length, iris$Petal.Length, col = km.cluster,
 plot(iris$Sepal.Width, iris$Petal.Width, col = km.cluster, 
      pch = 20, cex = 2, xlab="Sepal.Width", ylab="Petal.Width", cex.lab = 2)
 @
-

@@ -1,37 +1,103 @@
+% !Rnw root = ../main.Rnw
 \section{Twitter}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut lacinia arcu, eu euismod ligula. Fusce eleifend neque mollis, sagittis urna nec, sagittis felis. Etiam porttitor eros quis pretium finibus. Etiam vitae nunc nibh. Sed eget felis non dolor maximus molestie sit amet in dui. In hac habitasse platea dictumst. Ut sem leo, rhoncus vitae varius eget, cursus et leo. Sed placerat dolor pharetra orci placerat elementum. Donec commodo metus sed volutpat eleifend. Nunc vel quam mauris. Sed rhoncus ultrices nisl sit amet dignissim. Nulla non enim vel risus imperdiet euismod id eu mauris. Nullam faucibus sem id tincidunt vehicula. Aliquam quis congue sapien, tincidunt feugiat metus. Integer luctus magna ut gravida porttitor.
+\texttt{twitteR}es una red social de microblogin creada en marzo del 2006, se estima que actualmente cuenta con más de 500 millones de usuarios a nivel mundial, generando más de 65 millones de tweets al día.
 
-<<C1_chunk1, tidy=TRUE>>=
-a <- c(1:43,2)
-a
+En esta red un usuario puede enviar mensajes con una longitud de 140 caracteres llamados tweets, los tweets de un usuario aparecen en su página principal (timeline). Los usuarios pueden suscribirse a las actualizaciones de otros usuarios, a esto se le llama seguir a un usuario (follow). A los usuarios que uno sigue se les conoce como followees y los usuarios que siguen a uno son followers.
+
+En esta red social existen dos principales tipos de interacciones con los contenidos de otros usuarios. 
+
+La primera consiste en dar retweet (RT) a algún tweet, es decir, re publicar el tweet de otra persona. Cuando un usuario realiza un retweet todos sus seguidores verán el tweet original y el nombre del usuario que lo escribió originalmente. 
+
+El segundo tiempo de interacción que los usuarios pueden realizar en esta red social es marcar un tweet como favorito, el marcar un tweet como favorito nos permite poder consultarlo posteriormente ya que la plataforma guarda un registro de los tweets que un usuario marca como favoritos.
+
+Usualmente estos dos tipos de interacciones son la medida utilizada para determinar si un tweet es popular o no, a mayor cantidad de retweets y favoritos se considera que el contenido publicado es exitoso.
+
+\section{API de Twitter}
+<<external-code, cache=FALSE, echo=FALSE>>=
+read_chunk('Rscripts/funciones.R')
 @
 
+\texttt{twitteR}cuenta con una API (Application Programming Interface) que nos permite conectarnos con la plataforma y realizar consultas para la obtención de datos. Es necesario contar con una cuenta en la red social y crear una aplicación para poder tener acceso a la API.
 
-Pellentesque dolor mi, tincidunt sit amet porta ac, gravida quis nisi. Ut fermentum sit amet purus nec tristique. Ut id leo ac arcu luctus consectetur at et tellus. Integer quis mauris eget tellus tempor blandit. Sed mi nisi, vehicula eget eros id, mollis sagittis risus. Duis erat felis, pulvinar in magna et, eleifend accumsan ante. Aenean eu lobortis dolor, et bibendum mi. Ut justo enim, vulputate vitae suscipit ut, congue at ante. Nulla luctus orci id tellus mollis gravida. Mauris dignissim massa eu felis dignissim, non luctus nunc luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris eget diam sollicitudin, iaculis dui nec, tristique ipsum. Nullam tempus molestie maximus.
+\subsection*{twitteR}
 
-Quisque a magna nisl. Duis et purus sapien. Suspendisse volutpat purus libero, ac facilisis nisl sodales ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce consectetur erat purus. Cras a vehicula turpis. Vivamus vulputate eget ipsum non tempus. Maecenas consequat nunc augue, non maximus massa ultricies eu. Curabitur tincidunt consectetur mi, nec convallis massa. Vivamus consectetur, sapien ut maximus sodales, lacus eros condimentum erat, at euismod enim risus ut est. Pellentesque maximus augue elementum eros molestie suscipit. Proin aliquam tristique urna, ac aliquam metus sodales sed. Aliquam mattis augue et leo semper pulvinar.
+Existen varias librerías en distintos lenguajes de programación que facilitan el acceso a la API y el guardado de los datos obtenidos, en\texttt{R}la librería más desarrollada es \texttt{twitteR}.
 
-Vestibulum cursus neque lacus, vel efficitur purus congue in. Fusce quis vulputate nulla. Nullam at convallis augue. Pellentesque varius risus non turpis placerat, sit amet consequat quam malesuada. Quisque sed neque sed ante ultricies condimentum vel tempus tortor. Nullam ac volutpat sapien, et molestie elit. Pellentesque gravida nunc congue mauris viverra, ac tempus arcu mollis. Nullam enim dolor, auctor sit amet bibendum sit amet, suscipit non neque. Duis velit lectus, sagittis ac mollis vitae, sagittis vel lacus. Phasellus ac neque ultricies elit ornare commodo sit amet et purus. Sed blandit tellus augue, quis porta velit convallis non.
+Con esta librería podemos utilizar \texttt{R} para obtener datos de usuarios y de los tweets publicados, se puede obtener un listado de todos los seguidores de un usuario y posteriormente obtener la información detallada de cada uno de estos usuarios.
 
-Ut tincidunt lacus ut erat molestie, eget posuere nunc volutpat. Maecenas vitae scelerisque orci. Nullam cursus maximus fermentum. Fusce sodales ultrices justo sed fringilla. Cras vel sollicitudin lorem. Nulla quis rhoncus quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla a libero vel quam venenatis aliquet.
+El objetivo de esta tesis es el análisis y clasificación de los seguidores de una marca, se tomó a Coca-Cola como la marca en cuestión ya que es una de las marcas que, a nivel nacional, cuentan con más seguidores y niveles altos de interacción. 
 
-Aliquam fringilla scelerisque diam. Curabitur non nunc nulla. Nam at facilisis orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed vitae tincidunt ligula. Sed efficitur risus suscipit orci sodales commodo. Praesent eu neque id massa efficitur finibus et a justo. Integer accumsan tempor orci ac elementum. Mauris arcu felis, elementum non ipsum in, iaculis condimentum orci. Aenean non purus metus. Maecenas sollicitudin neque a odio malesuada, sed pharetra tellus sollicitudin. Aliquam a nisi in massa ornare gravida quis vitae magna.
+\texttt{twitteR} maneja dos clases de objetos: usuarios (user) y tweets (status). Para obtener la información de todos los usuarios que siguen a Coca-Cola primero se debe obtener la información de Coca-Cola y posteriormente, con el uso del método \texttt{getFollowerIDs} obtenemos la lista de id's de todos los usuarios que siguen a la marca.
 
-Nunc sem mauris, laoreet sit amet vestibulum a, vulputate ut felis. Nam lacus urna, laoreet et lorem eu, varius auctor libero. Donec ut turpis orci. Etiam neque massa, gravida in lacus non, sagittis accumsan ex. Duis blandit risus eget arcu efficitur, luctus dapibus nisi blandit. Etiam nec faucibus sem. Aenean ac lobortis metus.
-\section{TwitteR}
-Curabitur lacinia consequat ligula, non aliquam magna mollis eu. Quisque tincidunt augue dui, ut laoreet lorem tristique ultrices. Duis non lorem quis tortor pretium aliquet. Donec est ligula, vehicula at odio vel, ultrices tincidunt velit. Nunc a tortor sagittis purus tincidunt volutpat a blandit orci. Donec efficitur ex non enim rhoncus, imperdiet suscipit sapien iaculis. Donec placerat tempor velit, eget molestie eros elementum sit amet. In ornare ultrices congue. Duis porttitor gravida sollicitudin. Etiam non maximus libero, quis pulvinar erat.
+<<get_followers_ids, tidy=TRUE>>=
+@
 
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque id quam feugiat, faucibus felis ac, sollicitudin nibh. Curabitur ut viverra eros, id lobortis sem. Nulla varius sodales accumsan. Aenean nec ligula tincidunt, mollis lectus sed, ullamcorper magna. Cras consectetur diam quis tellus blandit, eget aliquam nisl accumsan. Praesent sagittis ut nisi et ultricies. In metus ligula, rutrum nec ullamcorper nec, aliquet vitae neque. Nunc felis risus, fermentum vel sodales et, lacinia nec lectus. Vestibulum eget urna tincidunt, pellentesque ipsum a, varius elit. Nulla condimentum tempor velit eget euismod. Mauris blandit facilisis arcu sit amet sodales. Integer ut diam risus. Cras vitae convallis ante. Ut sed neque velit. Donec iaculis libero risus, at placerat sapien tempor sed.
+Ya que se cuenta con la lista de id's de los seguidores de la marca se utiliza la función \texttt{lookupUsers()} de \texttt{twitteR} para obtener la información de cada uno de los usuarios. 
+ 
+<<get_followers, tidy=TRUE>>=
+@
 
-Pellentesque iaculis urna at ipsum auctor laoreet. Sed volutpat, ipsum quis mollis faucibus, nibh ex finibus quam, ultrices tempus leo sem vel risus. Nulla sagittis eget tellus eu interdum. Donec iaculis posuere urna. Fusce in imperdiet elit. Curabitur interdum quam ac magna porta, a consequat libero maximus. Quisque bibendum purus sed libero auctor efficitur. Phasellus a placerat nunc, nec interdum tellus. Nam accumsan nulla lacus, in varius nisl luctus eu. Curabitur dapibus neque a gravida tincidunt. Pellentesque at risus risus. Sed fermentum est lacus, et facilisis leo tincidunt eget. Suspendisse potenti. Nam sit amet viverra velit.
+La API de Twitter tiene limitaciones de uso, en el caso de la función \texttt{lookupUsers()} solamente se pueden hacer 180 llamadas cada 15 minutos, en cada llamada se obtienen los datos de 100 usuarios, es decir, cada 15 minutos podemos obtener la información de 1,800 usuarios.
 
-Phasellus pharetra elit urna, ultrices accumsan mi consequat vel. Cras vel faucibus nulla. Etiam turpis nibh, volutpat sit amet aliquet semper, ornare sit amet magna. Nulla aliquam, nisi sed eleifend tempus, magna massa scelerisque metus, at dictum massa magna sit amet eros. Donec vitae rutrum dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In eget egestas nunc. Maecenas sed porta dolor. Praesent dictum justo id diam tristique, eget ultricies diam egestas.
+Esta función guarda los datos de los seguidores en varios bloques llamados chunks, en cada uno se guardan los datos de 1,800 usuarios. Esto se hace porque, si existe una falla en la conexión con la API de Twitter se puede continuar con la extracción de la información a partir del ultimo chunk guardado con éxito, en lugar de comenzar desde el principio.
 
-Curabitur blandit mauris et neque sagittis, sed interdum dolor tempus. Suspendisse eu ex at ex aliquam pretium. Aliquam non justo cursus arcu imperdiet sollicitudin ac nec erat. Etiam id odio semper, cursus purus posuere, luctus diam. Vivamus ac hendrerit purus, sit amet pulvinar neque. Curabitur sit amet vehicula lorem, a posuere mi. Nulla in fermentum ligula. Quisque ut viverra neque. Fusce fermentum auctor augue non aliquet. Curabitur aliquam tincidunt consequat.
+La función guarda los resultados obtenidos en cada consulta en una base de datos, posteriormente se puede utilizar la función \texttt{twListToDF} para convertir los datos de los usuarios en un Data Frame.
 
-Duis vestibulum vulputate malesuada. Nunc ac eleifend metus. Nam ullamcorper lectus ut velit molestie, ullamcorper dictum sapien interdum. Vivamus tristique sem quis volutpat gravida. Morbi feugiat viverra ullamcorper. Sed eleifend consectetur est, eget sodales enim tempus a. Quisque turpis metus, venenatis vel dolor eget, venenatis vehicula urna. Cras mollis quam sed ipsum ullamcorper eleifend. Aenean at sapien eu tortor placerat condimentum non aliquam arcu. Praesent in mauris eros. Morbi ultricies sem nunc, ac accumsan nisl vulputate a. Integer euismod arcu risus, eu luctus felis gravida sit amet. Proin id arcu tellus. Donec vitae nunc dapibus, luctus tellus sit amet, maximus odio. Donec vulputate massa in libero efficitur condimentum. Mauris rutrum massa vel gravida congue.
+\subsection*{Datos de Twitter}
 
-Maecenas suscipit leo id neque sagittis, quis porttitor leo molestie. Nunc augue eros, hendrerit vitae est a, maximus gravida velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam scelerisque quam a justo laoreet, laoreet ullamcorper orci lacinia. Fusce odio lorem, dapibus in sollicitudin in, tempus sit amet diam. Ut varius urna in fermentum sollicitudin. Donec varius nibh quis placerat condimentum. Etiam venenatis sed est vel tincidunt. Donec convallis massa id nisl viverra, vel lacinia nulla semper. Morbi gravida nisi sapien, in molestie dolor blandit nec. Nunc placerat lorem et lectus lacinia, sit amet rhoncus risus egestas. Aliquam molestie est quam, nec imperdiet turpis scelerisque ac.
+Para analizar que tipo de información obtenemos de la API de Twitter se cargan los datos descargados en la sección anterior y se analizan los primeros 10 para ver que tipo de variables se obtuvieron.
 
-Pellentesque nec augue et diam interdum condimentum. Cras aliquam nec augue eu fringilla. Donec vulputate ut lectus sit amet rutrum. Duis sit amet pulvinar mi. In odio libero, dapibus in magna sed, aliquet auctor felis. Maecenas ut eros at velit suscipit euismod. Cras commodo quam in sem pellentesque congue.
+La información de un usuario de Twitter es de dos tipos, datos numéricos y caracteres. En esta primer tabla presentamos los datos tipo carácter de los primeros 10 usuarios de Coca-Cola.
+
+El \texttt{screenName} de un usuario es el nombre que eligió al abrir su cuenta en la red social, este nombre es único y puede contener cualquier carácter.
+
+La variable \texttt{name} de un usuario es el nombre con el que registra su cuenta, no necesariamente su nombre real.
+
+En \texttt{charDate} encontramos la fecha en la que creó su cuenta en Twitter.
+
+\texttt{lang} es el idioma que el usuario eligió para la interfaz de su cuenta en Twitter, no necesariamente es el idioma de los tweets que publica.
+
+<<coca_followers1, tidy=TRUE, results="asis", echo=FALSE, message=FALSE>>=
+library(xtable)
+setwd("/Users/Dan/Desktop/Tesis/Statistical-Learning")
+source("Rscripts/sample.R")
+table1 <- xtable(sample[1:10, string_col])
+digits(table1) <- 0
+caption(table1) <- "Datos basicos de un usuario en Twitter."
+print(table1, floating = T,include.rownames=FALSE,
+      latex.environments = "center")
+@
+
+En esta tabla podemos ver la cantidad de personas que siguen a un usuario, la cantidad de cuentas que sigue este usuario y el total de listas a las que el usuario ha sido añadido. 
+
+<<coca_followers2, tidy=TRUE, results="asis", echo=FALSE>>=
+table2 <- xtable(sample[1:10, rel_col])
+digits(table2) <- 0
+caption(table2) <- "Datos sociales de un usuario de Twitter."
+print(table2, floating = T, include.rownames=FALSE,
+      latex.environments = "center")
+@
+
+A continuación vemos información de como se comporta el usuario dentro de la red social.
+
+En esta tabla vemos datos numéricos del como twittera el usuario, cuantos tweets ha publicado desde la apertura de su cuenta, cuantos tweets ha marcado como favoritos y si su cuenta es o no protegida.
+
+<<coca_followers3, tidy=TRUE, results="asis", echo=FALSE>>=
+table3 <- xtable(sample[1:10, act_col])
+digits(table3) <- 0
+caption(table3) <- "Datos del comportamiento de un usuario en Twitter."
+print(table3, floating = T, include.rownames=FALSE,
+      latex.environments = "center")
+@
+
+A partir de las variables anteriores se definen nuevas variables que nos ayudaran a comprender mejor el comportamiento de cada usuario en la red social.
+
+Se calcula la edad de la cuenta, la proporción entre usuarios que sigue y usuarios que lo siguen y se divide el total de tweets publicados entre la edad de la cuenta para tener un promedio de tweets al día. 
+
+<<coca_followers4, tidy=TRUE, results="asis", echo=FALSE>>=
+table4 <- xtable(sample[1:10, extra_col])
+digits(table4) <- 2
+caption(table4) <- "Variables adicionales."
+print(table4, floating = T, include.rownames=FALSE)
+@

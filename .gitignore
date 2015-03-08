@@ -3,6 +3,7 @@
 .RData
 figure/
 cache/
+data/
 r-forge/
 *.pdf
 *-tikzDictionary
@@ -10,3 +11,5 @@ r-forge/
 095-pandoc.sty
 /Sweavel.sty
 .Rproj.user
+.httr-oauth
+main-concordance.tex

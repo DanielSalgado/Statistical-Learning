@@ -1,5 +1,7 @@
-\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{6}
-\contentsline {chapter}{\numberline {2}Capitulo 1}{7}
-\contentsline {chapter}{\numberline {3}Capitulo 2}{11}
-\contentsline {chapter}{\numberline {4}Concluciones}{12}
-\contentsline {chapter}{\numberline {A}Apendice}{13}
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
+\contentsline {chapter}{\numberline {2}Obtencion de datos}{3}
+\contentsline {section}{\numberline {2.1}Twitter}{3}
+\contentsline {section}{\numberline {2.2}API de Twitter}{4}
+\contentsline {chapter}{\numberline {3}Algoritmos de agrupamiento no supervisados}{9}
+\contentsline {section}{\numberline {3.1}K-means}{9}

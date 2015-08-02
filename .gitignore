@@ -13,3 +13,4 @@ r-forge/
 .Rproj.user
 .httr-oauth
 main-concordance.tex
+Rscripts/twitter_handshake.R
